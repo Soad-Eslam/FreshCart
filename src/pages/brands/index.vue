@@ -19,7 +19,6 @@ import axios from "axios";
 import { onMounted, ref } from "vue";
 import type { Brand } from "../../types/index.ts";
 import { useLoading } from "vue-loading-overlay";
-import { toast } from "vue3-toastify";
 import Footer from "../../components/Footer.vue";
 const brands = ref<Brand[]>([]);
 

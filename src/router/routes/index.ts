@@ -1,78 +1,71 @@
-import Home from "../../pages/Home/index.vue";
-import product from "../../pages/product/index.vue";
-import cart from "../../pages/cart/index.vue";
-import category from "../../pages/category/index.vue";
-import brands from "../../pages/brands/index.vue";
-import payment from "../../pages/payment/index.vue";
+import type { RouteRecordRaw } from "vue-router";
+
 import MainLayout from "../../layouts/MainLayout.vue";
 import NotFound from "../../layouts/NotFound.vue";
-import Register from "../../pages/Auth/Register.vue";
-import Login from "../../pages/Auth/Login.vue";
-import ProductDetails from "../../components/Home/ProductDetails.vue";
-export const routes = [
+
+export const routes: RouteRecordRaw[] = [
   {
-    component: MainLayout,
     path: "/",
+    component: MainLayout,
     children: [
       {
         path: "",
-        component: Home,
         name: "home",
-        meta:{requiresAuth: true}
+        component: () => import("../../pages/Home/index.vue"),
+        meta: { requiresAuth: true },
       },
       {
         path: "product",
-        component: product,
         name: "product",
-        meta:{requiresAuth: true}
+        component: () => import("../../pages/product/index.vue"),
+        meta: { requiresAuth: true },
       },
       {
         path: "product/:id",
-        component: ProductDetails,
         name: "productDetails",
-        meta:{requiresAuth: true}
+        component: () => import("../../components/Home/ProductDetails.vue"),
+        meta: { requiresAuth: true },
       },
       {
         path: "cart",
-        component: cart,
         name: "cart",
-        meta:{requiresAuth: true}
+        component: () => import("../../pages/cart/index.vue"),
+        meta: { requiresAuth: true },
       },
       {
         path: "category",
-        component: category,
         name: "category",
-        meta:{requiresAuth: true}
+        component: () => import("../../pages/category/index.vue"),
+        meta: { requiresAuth: true },
       },
       {
         path: "brands",
-        component: brands,
         name: "brands",
-        meta:{requiresAuth: true}
-      }
-      ,
-      {
-        path:"payment",
-        component: payment,
-        name:"payment",
-        meta:{requiresAuth: true}
+        component: () => import("../../pages/brands/index.vue"),
+        meta: { requiresAuth: true },
       },
       {
-        path:"register",
-        component: Register,
-        name:"register",
-        meta:{requiresAuth: false}
+        path: "payment",
+        name: "payment",
+        component: () => import("../../pages/payment/index.vue"),
+        meta: { requiresAuth: true },
       },
       {
-        path:"login",
-        component: Login,
-        name:"login",
-        meta:{requiresAuth: false}
-      }
+        path: "register",
+        name: "register",
+        component: () => import("../../pages/Auth/Register.vue"),
+        meta: { requiresAuth: false },
+      },
+      {
+        path: "login",
+        name: "login",
+        component: () => import("../../pages/Auth/Login.vue"),
+        meta: { requiresAuth: false },
+      },
     ],
   },
   {
-    path: '/:pathMatch(.*)*',
+    path: "/:pathMatch(.*)*",
     component: NotFound,
   },
 ];

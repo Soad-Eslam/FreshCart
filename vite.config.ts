@@ -7,6 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base:"/E-commerce_App/",
   plugins: [
     vue(),
     vueDevTools(),
@@ -18,15 +19,4 @@ export default defineConfig({
     },
   },
 })
-//vite.config.js
-// export default defineConfig({
-//   server: {
-//     proxy: {
-//       '/api': {
-//         target: 'https://ecommerce.routemisr.com',
-//         changeOrigin: true,
-//         rewrite: (path) => path.replace(/^\/api/, ''),
-//       },
-//     },
-//   },
-// })
+

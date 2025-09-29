@@ -1,19 +1,25 @@
-import { createRouter, createWebHistory } from "vue-router";
-import { routes } from "./routes/index.ts";
-import { useAuthStore } from "../stores/Auth/index.ts";
+import { createRouter, createWebHashHistory } from "vue-router";
+import { routes } from "./routes";
+import { useAuthStore } from "../stores/Auth";
+
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHashHistory(), // 👈 use hash mode for GitHub Pages
   routes,
 });
 
-router.beforeEach((to, from) => {
-  const AuthStore = useAuthStore();
-  if (to.meta.requiresAuth && !AuthStore.isloggedIn) {
+// Navigation guard
+router.beforeEach((to) => {
+  const authStore = useAuthStore();
+
+  if (to.meta.requiresAuth && !authStore.isloggedIn) {
     return { name: "login" };
   }
-  if (AuthStore.isloggedIn && (to.name === "login" || to.name === "register")) {
+
+  if (authStore.isloggedIn && (to.name === "login" || to.name === "register")) {
     return { name: "home" };
   }
+
   return true;
 });
+
 export default router;
