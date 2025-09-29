@@ -1,0 +1,1 @@
+import{l as s,m as t,n as e,q as a,E as o,F as r}from"./index-Cp_2Jhzv.js";import{_ as n}from"./HomeProducts.vue_vue_type_script_setup_true_lang-BHA31aCY.js";const c={class:"pb-7"},d={__name:"index",setup(_){return(l,m)=>(t(),s(r,null,[e("div",c,[a(n)]),e("div",null,[a(o)])],64))}};export{d as default};
