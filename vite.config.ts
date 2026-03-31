@@ -7,7 +7,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base:"/E-commerce_App/",
+  base:"/FreshCart/",
   plugins: [
     vue(),
     vueDevTools(),
